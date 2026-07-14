@@ -1,0 +1,41 @@
+split,stratum_type,stratum_value,count,mean_pinball,coverage_80,flag
+val,department,General surgery,732,15.1928,0.7145,
+val,department,Gynecology,28,18.5423,0.7143,
+val,department,Thoracic surgery,168,16.7152,0.7798,
+val,department,Urology,17,29.154,0.5294,MISCAL
+val,optype,Biliary/Pancreas,124,13.8643,0.75,
+val,optype,Breast,78,17.9959,0.6795,MISCAL
+val,optype,Colorectal,209,12.2685,0.6842,MISCAL
+val,optype,Hepatic,30,23.4749,0.6,MISCAL
+val,optype,Major resection,94,20.4249,0.7128,
+val,optype,Minor resection,80,12.6465,0.7625,
+val,optype,Others,104,17.7211,0.7981,
+val,optype,Stomach,87,14.1641,0.7701,
+val,optype,Thyroid,36,8.7625,0.8611,
+val,optype,Transplantation,65,25.9014,0.6154,MISCAL
+val,optype,Vascular,38,14.3924,0.7105,
+val,emergency,elective,835,15.775,0.7269,
+val,emergency,emergency,110,16.1087,0.6909,MISCAL
+val,asa_bucket,ASA 1-2,823,14.9118,0.7217,
+val,asa_bucket,ASA 3,107,19.8267,0.7196,
+val,asa_bucket,ASA 4-5,15,36.682,0.8,
+test,department,General surgery,725,14.2969,0.7117,
+test,department,Gynecology,36,22.5428,0.6944,MISCAL
+test,department,Thoracic surgery,170,22.2513,0.7,
+test,department,Urology,15,11.6615,0.6,MISCAL
+test,optype,Biliary/Pancreas,118,12.8165,0.7458,
+test,optype,Breast,56,10.1061,0.8036,
+test,optype,Colorectal,205,11.7408,0.6829,MISCAL
+test,optype,Hepatic,44,22.6636,0.7045,
+test,optype,Major resection,89,18.8526,0.7753,
+test,optype,Minor resection,82,15.5133,0.6585,MISCAL
+test,optype,Others,100,24.0334,0.67,MISCAL
+test,optype,Stomach,101,16.9276,0.6931,MISCAL
+test,optype,Thyroid,47,13.4346,0.7021,
+test,optype,Transplantation,62,20.6372,0.6452,MISCAL
+test,optype,Vascular,42,16.1471,0.7619,
+test,emergency,elective,834,15.8727,0.7098,
+test,emergency,emergency,112,16.9345,0.6875,MISCAL
+test,asa_bucket,ASA 1-2,837,15.5225,0.7121,
+test,asa_bucket,ASA 3,100,18.4829,0.67,MISCAL
+test,asa_bucket,ASA 4-5,9,32.6478,0.6667,MISCAL

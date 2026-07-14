@@ -1,0 +1,199 @@
+dataset: VitalDB surgery-duration preprocessing v1
+label:
+  name: duration_minutes
+  definition: (opend - opstart) / 60
+  unit: minutes
+leakage_rule: no feature derived from information at/after opstart
+columns:
+- name: caseid
+  dtype: int64
+  role: id
+  source: clinical_data.caseid (identifier)
+- name: age
+  dtype: float64
+  role: feature
+  source: clinical_data.age
+- name: sex
+  dtype: int32
+  role: feature
+  source: clinical_data.sex (label-encoded)
+- name: bmi
+  dtype: float64
+  role: feature
+  source: 'derived: weight/(height/100)^2, fallback clinical_data.bmi, capped [10,70]'
+- name: asa
+  dtype: float64
+  role: feature
+  source: clinical_data.asa (ordinal 1-5)
+- name: department
+  dtype: int32
+  role: feature
+  source: clinical_data.department (label-encoded)
+- name: optype
+  dtype: int32
+  role: feature
+  source: clinical_data.optype (label-encoded)
+- name: opname
+  dtype: int32
+  role: feature
+  source: clinical_data.opname (label-encoded, rare-grouped)
+- name: approach
+  dtype: int32
+  role: feature
+  source: clinical_data.approach (label-encoded)
+- name: position
+  dtype: int32
+  role: feature
+  source: clinical_data.position (label-encoded)
+- name: ane_type
+  dtype: int32
+  role: feature
+  source: clinical_data.ane_type (label-encoded)
+- name: emergency
+  dtype: float64
+  role: feature
+  source: clinical_data.emop (0/1)
+- name: preop_htn
+  dtype: float64
+  role: feature
+  source: clinical_data.preop_htn (0/1)
+- name: preop_dm
+  dtype: float64
+  role: feature
+  source: clinical_data.preop_dm (0/1)
+- name: lab_hb
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''hb'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_hct
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''hct'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_wbc
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''wbc'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_plt
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''plt'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_na
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''na'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_k
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''k'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_gluc
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''gluc'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_cr
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''cr'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_bun
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''bun'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_alb
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''alb'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_ast
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''ast'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_alt
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''alt'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_ptinr
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''ptinr'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: lab_aptt
+  dtype: float64
+  role: feature
+  source: 'lab_data: most-recent ''aptt'' with opstart-30d <= dt < opstart (leakage-safe)'
+- name: op_hour
+  dtype: Float64
+  role: feature
+  source: 'PLACEHOLDER (null): unrecoverable, casestart anonymized to 0'
+- name: op_dow
+  dtype: Int64
+  role: feature
+  source: 'PLACEHOLDER (null): unrecoverable, casestart anonymized to 0'
+- name: surgeon_id
+  dtype: string
+  role: feature
+  source: 'PLACEHOLDER (null): VitalDB anonymized, no surgeon IDs'
+- name: surgeon_case_count_for_this_procedure
+  dtype: Int64
+  role: feature
+  source: 'PLACEHOLDER (null): future data source'
+- name: asa_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for asa (1=was missing, median-imputed)
+- name: lab_hb_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_hb (1=was missing, median-imputed)
+- name: lab_hct_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_hct (1=was missing, median-imputed)
+- name: lab_wbc_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_wbc (1=was missing, median-imputed)
+- name: lab_plt_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_plt (1=was missing, median-imputed)
+- name: lab_na_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_na (1=was missing, median-imputed)
+- name: lab_k_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_k (1=was missing, median-imputed)
+- name: lab_gluc_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_gluc (1=was missing, median-imputed)
+- name: lab_cr_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_cr (1=was missing, median-imputed)
+- name: lab_bun_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_bun (1=was missing, median-imputed)
+- name: lab_alb_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_alb (1=was missing, median-imputed)
+- name: lab_ast_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_ast (1=was missing, median-imputed)
+- name: lab_alt_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_alt (1=was missing, median-imputed)
+- name: lab_ptinr_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_ptinr (1=was missing, median-imputed)
+- name: lab_aptt_missing
+  dtype: int8
+  role: feature
+  source: missingness indicator for lab_aptt (1=was missing, median-imputed)
+- name: duration_minutes
+  dtype: float64
+  role: label
+  source: 'LABEL: (opend-opstart)/60'
